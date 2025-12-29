@@ -14,6 +14,10 @@ const DetailsDoctor = () => {
     (doctor) => typeof id === "string" && doctor.id === parseInt(id)
   );
 
+
+  if (!doctorDetails) return <div>Doctor not found</div>;
+
+
   const [selected, setSelected] = useState(tabs[0]);
 
   useEffect(() => {
