@@ -4,26 +4,26 @@ import data from '@/db.json'
 import { motion } from "motion/react";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import {ChartNoAxesGantt ,DollarSign,MapPin,Clock,CreditCard,Pipette,UserRoundX,User } from 'lucide-react'
+
 const DetailsDoctor = () => {
 
-    const params = useParams();
+  const params = useParams();
+  const id = params.id;
 
-    const { id } = params;
+  const doctorDetails = data.doctors.find(
+    (doctor) => typeof id === "string" && doctor.id === parseInt(id)
+  );
 
-    const doctorDetails = data.doctors.find((doctor) => doctor.id === parseInt(id));
   const [selected, setSelected] = useState(tabs[0]);
 
-  console.log(selected)
-
-
-useEffect(() => {
-  const handleHashChange = () => {
-    const hash = window.location.hash;
-    const tab = tabs.find(t => t.href === hash);
-    if (tab) {
-      setSelected(tab);
-    }
-  };
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      const tab = tabs.find((t) => t.href === hash);
+      if (tab) {
+        setSelected(tab);
+      }
+    };
 
   window.addEventListener('hashchange', handleHashChange);
   handleHashChange(); // Check initial hash on mount
