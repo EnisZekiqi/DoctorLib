@@ -1,0 +1,200 @@
+{
+  "doctors": [
+    {
+      "id": 1,
+      "name": "Dr. Marie Dupont",
+      "image":"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fHww",
+      "sector": "Sector 1",
+      "carteVitaleAccepted": true,
+      "thirdPartyPayer": "Sécurité sociale",
+      "paymentMethods": ["Check", "Cash", "Credit card"],
+      "specialties": [
+        "Abortion support",
+        "Adolescent gynecology"
+      ],
+      "clinic": {
+        "name": " Ophtalmologique et médical à Marseille",
+        "address": "166 Rue François Mauriac, 13010 ",
+        "city":"Marseille",
+        "transportation": [
+          "Bus - Saint Tronc Gauloise (line 16S)",
+          "Bus - Saint Tronc Transformateur (line 16S)",
+          "Bus - Toulouse Val Des Bois (lines 16S, 16T)"
+        ],
+        "additionalInfo": ["Accessible entrance", "Free parking"]
+      },
+      "profile": {
+        "description": "Le médecin généraliste accueille les enfants et les adultes pour tous types de soins médicaux généraux.",
+        "languages": ["English", "French"],
+        "diplomas": [
+          {
+            "year": 2023,
+            "title": "D.E.S. Médecine générale",
+            "school": "Faculté de médecine de Marseille"
+          },
+          {
+            "year": 2021,
+            "title": "D.E.S.U. Accompagnement de la grossesse à la naissance",
+            "school": "Faculté de médecine de Marseille"
+          }
+        ]
+      },
+      "openingHours": {
+        "monday": "08:00 - 18:00",
+        "tuesday": "08:00 - 18:00",
+        "wednesday": "08:00 - 18:00",
+        "thursday": "08:00 - 18:00",
+        "friday": "08:00 - 18:00",
+        "saturday": "09:00 - 13:00",
+        "sunday": "Closed"
+      },
+      "emergencyNumber": "15",
+      "contact": "04 12 04 04 60",
+      "fees": {
+        "consultation_adulte": 25,
+        "consultation_pediatrie": 30
+      },
+      "rpps": "10101908399"
+    },
+
+
+
+    {
+      "id": 2,
+      "name": "Dr. Antoine Martin",
+      "image":"https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVvcGxlfGVufDB8fDB8fHww",
+      "sector": "Sector 1",
+      "carteVitaleAccepted": true,
+      "thirdPartyPayer": "Sécurité sociale",
+      "paymentMethods": ["Cash", "Credit card"],
+      "specialties": ["General medicine", "Vaccination", "ECG"],
+      "clinic": {
+        "name": "Cabinet Médical Saint-Pierre",
+        "address": "20 Avenue Saint-Pierre, 13005 Lille",
+         "city":"Lille",
+        "transportation": ["Metro - Baille (M1)", "Bus - Saint-Pierre (54)"],
+        "additionalInfo": ["Accessible entrance"]
+      },
+      "profile": {
+        "description": "Médecin généraliste pour adultes et enfants.",
+        "languages": ["French"],
+        "diplomas": [
+          {
+            "year": 2020,
+            "title": "D.E.S. Médecine générale",
+            "school": "Faculté de médecine de Marseille"
+          }
+        ]
+      },
+      "openingHours": {
+        "monday": "09:00 - 17:00",
+        "tuesday": "09:00 - 17:00",
+        "wednesday": "09:00 - 17:00",
+        "thursday": "09:00 - 17:00",
+        "friday": "09:00 - 17:00",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "emergencyNumber": "15",
+      "contact": "04 12 44 20 11",
+      "fees": {
+        "consultation_adulte": 25,
+        "consultation_pediatrie": 30
+      },
+      "rpps": "10101908001"
+    },
+
+    {
+      "id": 3,
+      "name": "Dr. Sarah Lefèvre",
+      "image":"https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVvcGxlfGVufDB8fDB8fHww",
+      "sector": "Sector 2",
+      "carteVitaleAccepted": true,
+      "thirdPartyPayer": "Sécurité sociale",
+      "paymentMethods": ["Check", "Cash"],
+      "specialties": ["Pediatrics", "Vaccination", "General medicine"],
+      "clinic": {
+        "name": "Maison Santé Castellane",
+        "address": "92 Rue Paradis, 13006 Avignon",
+         "city":"Avignon",
+        "transportation": ["Metro - Castellane", "Tram 3"],
+        "additionalInfo": ["Parking available"]
+      },
+      "profile": {
+        "description": "Pédiatre spécialisée dans le suivi de l'enfant et de l’adolescent.",
+        "languages": ["French", "English"],
+        "diplomas": [
+          {
+            "year": 2018,
+            "title": "D.E.S. Pédiatrie",
+            "school": "Université Aix-Marseille"
+          }
+        ]
+      },
+      "openingHours": {
+        "monday": "08:30 - 17:30",
+        "tuesday": "08:30 - 17:30",
+        "wednesday": "08:30 - 17:30",
+        "thursday": "08:30 - 17:30",
+        "friday": "08:30 - 17:30",
+        "saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "emergencyNumber": "15",
+      "contact": "04 12 22 33 44",
+      "fees": {
+        "consultation_adulte": 30,
+        "consultation_pediatrie": 35
+      },
+      "rpps": "10101908002"
+    },
+
+    
+    
+    {
+      "id": 4,
+      "name": "Dr. Paul Bernard",
+      "image":"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D",
+      "sector": "Sector 1",
+      "carteVitaleAccepted": true,
+      "thirdPartyPayer": "Sécurité sociale",
+      "paymentMethods": ["Credit card", "Cash"],
+      "specialties": ["General medicine", "ECG"],
+      "clinic": {
+        "name": "Clinique du Prado",
+        "address": "12 Boulevard du Prado, 13008 Paris",
+         "city":"Paris",
+        "transportation": ["Metro M2"],
+        "additionalInfo": ["Parking available"]
+      },
+      "profile": {
+        "description": "Suivi médical général pour adultes.",
+        "languages": ["French"],
+        "diplomas": [
+          {
+            "year": 2019,
+            "title": "D.E.S. Médecine générale",
+            "school": "Université Aix-Marseille"
+          }
+        ]
+      },
+      "openingHours": {
+        "monday": "09:00 - 17:00",
+        "tuesday": "09:00 - 17:00",
+        "wednesday": "09:00 - 17:00",
+        "thursday": "09:00 - 17:00",
+        "friday": "09:00 - 17:00",
+        "saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "emergencyNumber": "15",
+      "contact": "04 12 33 12 88",
+      "fees": {
+        "consultation_adulte": 25,
+        "consultation_pediatrie": 30
+      },
+      "rpps": "10101908003"
+    }
+
+  ]
+}

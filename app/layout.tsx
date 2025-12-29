@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Nunito } from "next/font/google";
+import { UserProvider } from "./context/LanguageContext";
 import "./globals.css";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import ScrollWrapper from "./hook/ScrollWrapper";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const nunito = Nunito({
+  variable: "--font-nunito",
   subsets: ["latin"],
 });
 
@@ -25,9 +24,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={` ${nunito.variable} antialiased`}
       >
-        {children}
+        <UserProvider>
+        <ScrollWrapper>
+            <Navbar/>
+          {children}
+          <Footer/>
+        </ScrollWrapper>
+        </UserProvider>
+        
       </body>
     </html>
   );
