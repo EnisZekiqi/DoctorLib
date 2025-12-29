@@ -108,7 +108,6 @@ const childrenVariants={
             end: "bottom 5%",
             scrub: 0.8,
             pin: blobRef.current,
-            markers: true,
           },
         }).to(blobRef.current, {
           x: 120,

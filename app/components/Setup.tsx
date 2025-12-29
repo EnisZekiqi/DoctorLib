@@ -31,7 +31,7 @@ const Setup = () => {
     trigger: ".setup",
     start: "top 80%",
     end: "bottom 20%",
-    scrub: true,markers:true
+    scrub: true,
   }
 })
 

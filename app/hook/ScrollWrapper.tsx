@@ -1,13 +1,17 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, ReactNode } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-export default function ScrollWrapper({ children }) {
+type ScrollWrapperProps = {
+  children: ReactNode;
+};
+
+export default function ScrollWrapper({ children }: ScrollWrapperProps) {
   const smootherRef = useRef<ScrollSmoother | null>(null);
 
   useEffect(() => {

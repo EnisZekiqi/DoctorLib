@@ -19,7 +19,7 @@ export default function Home() {
      <Status/>
      <div className="h-20"></div>
      <Setup/>
-     <div className="h-30"></div>
+     <div className="h-20"></div>
      <Professional/>
       <div className="h-40"></div>
       
