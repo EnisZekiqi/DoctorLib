@@ -21,7 +21,7 @@ const Setup = () => {
       
       repeat:-1,
       duration:3,
-      ease: "linear",
+      ease: "bounce.in",
     })
 
     gsap.from(".setup", {
@@ -29,7 +29,7 @@ const Setup = () => {
   opacity: 0,
   scrollTrigger: {
     trigger: ".setup",
-    start: "top 80%",
+    start: "top 110%",
     end: "bottom 20%",
     scrub: true,
   }
@@ -80,7 +80,7 @@ const Setup = () => {
       {/* Rotating image */}
       <div
         ref={rotaterRef}
-        className="rotater w-40 h-40 md:w-60  md:h-60 absolute top-1/2 right-10 transform -translate-y-1/2"
+        className="rotater w-40 h-40 md:w-60  md:h-60 absolute top-[65%] right-[25%] transform -translate-y-1/2"
       >
         <img src="/rotate.svg" alt="Rotate" className="w-full h-full object-contain" />
       </div>

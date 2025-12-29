@@ -152,7 +152,7 @@ useEffect(() => {
     return ( 
         <section ref={sectionRef} className="section1 bg-[#eff1f1] min-h-[600px] md:h-[600px] w-full overflow-hidden sm:relative flex items-center">
         <div className="h-20"></div>
-<div className="  max-w-9xl mx-auto flex flex-col-revers emd:flex-row items-center justify-between px-4 gap-12 ">
+<div className="    flex flex-col-revers emd:flex-row items-center justify-between px-10 gap-12 ">
         <div className="flex flex-col items-center md:items-start gap-4 pl-0">
          <motion.h1 
          initial={{opacity:0,y:-15}}
@@ -192,13 +192,13 @@ useEffect(() => {
     border border-[#1aa6a4]
     bg-white
     rounded-2xl
-    p-2
+    p-2 h-[55px]
     shadow-xl"
 >
             <div className="flex items-center gap-2.5">
             
              <Search  size={18} color="#5e6e6d"/>
-             <input value={forName} onChange={(e)=>setForName(e.target.value)} type="text"  className="focus:outline-0 w-full sm:w-auto flex-1" placeholder="Name,specialty,practice"/>
+             <input value={forName} onChange={(e)=>setForName(e.target.value)} type="text"  className=" h-10 focus:outline-0 w-full sm:w-[200px] flex-1" placeholder="Name,specialty,practice"/>
            </div>            <span className="h-8 w-px bg-[#849595]"></span>
            <div className="flex relative items-center gap-2.5">
             <MapPin  size={18} color="#5e6e6d"/>
@@ -206,7 +206,7 @@ useEffect(() => {
                   type="text"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="focus:outline-0 w-full sm:w-auto flex-1"
+                  className="focus:outline-0 w-full sm:w-[200px] h-fit flex-1"
                   placeholder="Where"
                 />
            </div>
@@ -245,7 +245,7 @@ useEffect(() => {
 <button
   type="submit"
   className="bg-[#1aa6a4] hover:bg-[#168c8a] transition-all
-  text-white rounded-xl px-6 py-3 font-medium shadow-md"
+  text-white rounded-xl px-4 py-2 font-medium shadow-md w-[150px]" 
 >
   Search doctors
 </button>

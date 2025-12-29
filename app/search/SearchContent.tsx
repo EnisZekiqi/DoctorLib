@@ -87,7 +87,6 @@ const [sectorValue,setSectorValue]=useState<string>('');/// filter for sector st
     {id:3,title:'Sector 3'}
   ]
 
-console.log(sectorValue)
 
 
 const filteredDoctors = useMemo(() => {
