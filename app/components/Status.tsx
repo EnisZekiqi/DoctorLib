@@ -76,7 +76,7 @@ const CountUp = ({ from, to, duration = 2 }: CountProps) => {
     return () => unsubscribe();
   }, []);
 
-  return <span ref={ref}>{displayValue.toLocaleString()}</span>;
+  return <span className="text-[30px] sm:text-[34px]" ref={ref}>{displayValue.toLocaleString()}</span>;
 };
 
 

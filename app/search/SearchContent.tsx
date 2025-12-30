@@ -42,33 +42,14 @@ const [forName, setForName] = useState<string>(name);
 const [searchTerm, setSearchTerm] = useState<string>(city);
 
 // Keep local inputs in sync if URL params change externally
-useEffect(() => {
-  if (name !== forName) setForName(name);
-  if (city !== searchTerm) setSearchTerm(city);
-}, [name, city]);
-  
-     const allCities = useMemo(() => {
-      const setOfCities = new Set(
-        data.doctors.map((doctor) => doctor.clinic.city)
-      );
-      return Array.from(setOfCities);
-    }, []);
-  
-    // Filtered city list
-    const filteredCities = useMemo(() => {
-      if (!searchTerm.trim()) return [];
-      return allCities.filter((city) =>
-        city.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }, [searchTerm, allCities]);
-  
+
   
     const [showAlert, setShowAlert] = useState<boolean>(false);
   
 
 // Debounced values (based on local input state)
-const debouncedName = useDebounce(forName, 400);
-const debouncedCity = useDebounce(searchTerm, 400);
+const debouncedName = useDebounce(forName, 800);
+const debouncedCity = useDebounce(searchTerm, 800);
 
 useEffect(() => {
   const params = new URLSearchParams();
@@ -131,7 +112,7 @@ const filteredDoctors = useMemo(() => {
             if (searchTerm.trim()) params.set('city', searchTerm.trim());
             router.push(`/search?${params.toString()}`);
           }}
-          className="flex items-center w-[80%] gap-2 border border-[#1aa6a4] bg-white rounded-2xl p-1 sm:p-2 shadow-xl shadow-black/10 backdrop-blur-md">
+          className="flex items-center w-[75%] gap-2 border border-[#1aa6a4] justify-between bg-white rounded-2xl p-1 sm:p-2 shadow-xl shadow-black/10 backdrop-blur-md">
             <div className="flex items-center gap-2.5 w-[43.5%]">
             
              <Search  size={18} color="#5e6e6d"/>
@@ -142,7 +123,7 @@ const filteredDoctors = useMemo(() => {
              placeholder="Name,specialty,practice"/>
            </div>          
              <span className="h-8 w-px bg-[#849595]"></span>
-           <div className="flex relative items-center gap-2.5 w-[43%]">
+           <div className="flex relative items-center gap-2.5 w-[40%]">
             <MapPin  size={18} color="#5e6e6d"/>
              <input
                   type="text"
@@ -152,38 +133,11 @@ const filteredDoctors = useMemo(() => {
                   placeholder="Where"
                 />
            </div>
-           <AnimatePresence>
-                <Activity mode={filteredCities.length > 0 ? "visible" : "hidden"}>
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.25, ease: "easeOut" },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      y: -10,
-                      transition: { duration: 0.35 },
-                    }}
-                    className="absolute top-[19%] left-[55%] w-[350px] bg-white rounded-lg shadow-lg border border-gray-200 z-20"
-                  >
-                    {filteredCities.map((city) => (
-                      <div
-                        key={city}
-                        className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                        onClick={() => setSearchTerm(city)}
-                      >
-                        {city}
-                      </div>
-                    ))}
-                  </motion.div>
-                </Activity>
-              </AnimatePresence>
+           
 <button
   type="submit"
   className="bg-[#1aa6a4] hover:bg-[#168c8a] transition-all
-  text-white rounded-xl px-4 py-3 font-medium shadow-md"
+  text-white rounded-xl px-2 py-1.5 font-medium shadow-md"
 >
   Search doctors
 </button>         

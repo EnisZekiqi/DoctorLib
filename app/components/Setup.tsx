@@ -63,7 +63,7 @@ const Setup = () => {
   return (
     <section
       ref={sectionRef}
-      className="setup relative w-full min-h-full flex flex-col md:flex-row justify-between items-center px-6 md:px-16 py-16 md:py-24 bg-[#f5f5f5] overflow-hidden"
+      className="setup relative w-full min-h-full flex flex-col gap-12 sm:gap-0 md:flex-row justify-between items-center px-6 md:px-16 py-16 md:py-24 bg-[#f5f5f5] overflow-hidden"
     >
       {/* Left text column */}
       <div className="flex flex-col items-start gap-6 max-w-lg">
@@ -80,19 +80,19 @@ const Setup = () => {
       {/* Rotating image */}
       <div
         ref={rotaterRef}
-        className="rotater w-40 h-40 md:w-60  md:h-60 absolute top-[65%] right-[25%] transform -translate-y-1/2"
+        className="rotater w-30 h-30 sm:w-40 sm:h-40 md:w-60  md:h-60 absolute top-[88%] right-[3%] sm:top-[65%] sm:right-[25%] transform -translate-y-1/2"
       >
         <img src="/rotate.svg" alt="Rotate" className="w-full h-full object-contain" />
       </div>
 
       {/* Optional placeholder / extra content */}
-      <div className="hidden md:flex flex-col gap-6 bg-white/30 backdrop-blur-md rounded-lg p-6 shadow-xl z-[20]  max-w-md">
+      <div className="flex flex-col gap-6 bg-white/30 backdrop-blur-md rounded-lg p-6 shadow-xl z-[20]  max-w-md">
         {/* Example content */}
         <div className="flex items-center gap-4">
           <img src="/real.svg" alt="Icon" className="w-10 h-10" />
           <div className="flex flex-col gap-1">
             <h2 className="text-lg font-semibold">Verified Doctors</h2>
-            <p className="text-sm text-gray-700">Compare fees & book appointments easily</p>
+            <p className="text-xs sm:text-sm text-gray-700">Compare fees & book appointments easily</p>
           </div>
         </div>
 
@@ -100,11 +100,11 @@ const Setup = () => {
           <img src="/undraw_agreement_ftet.svg" alt="Icon" className="w-10 h-10" />
           <div className="flex flex-col gap-1">
             <h2 className="text-lg font-semibold">Quick Booking</h2>
-            <p className="text-sm text-gray-700">Book appointments in seconds</p>
+            <p className="text-xs sm:text-sm text-gray-700">Book appointments in seconds</p>
           </div>
         </div>
 
-        <p className="text-sm text-gray-600">
+        <p className="text-xs sm:text-sm text-gray-600">
           Access verified clinics and doctors easily with real-time availability and reviews.
         </p>
 

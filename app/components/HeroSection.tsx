@@ -10,6 +10,7 @@ import gsap from "gsap";
 import {ScrollSmoother} from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import data from '@/db.json'
+import Link from "next/link";
 
 const HeroSection = () => {
 
@@ -55,6 +56,17 @@ if (searchTerm) params.set("city", searchTerm);
       router.push(`/search?${params.toString()}`);
     })
   };
+
+  const handleCity = (city: string) => {
+  const params = new URLSearchParams();
+
+  if (forName) params.set("name", forName);
+  params.set("city", city);
+
+  startTransition(() => {
+    router.push(`/search?${params.toString()}`);
+  });
+};
 
 
   const containerVariants={
@@ -210,7 +222,7 @@ useEffect(() => {
                   placeholder="Where"
                 />
            </div>
-           <AnimatePresence>
+           
                 <Activity mode={filteredCities.length > 0 ? "visible" : "hidden"}>
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
@@ -225,23 +237,23 @@ useEffect(() => {
                       transition: { duration: 0.35 },
                     }}
                     className=" absolute
-  top-full
-  left-0
+  top-[58%]
+  left-[18%]
   w-full
-  sm:w-[240px] bg-white rounded-lg shadow-lg border border-gray-200 z-20"
+  sm:w-[240px] bg-white rounded-lg shadow-lg border border-gray-200 z-20 p-2"
                   >
                     {filteredCities.map((city) => (
-                      <div
+                      <button
                         key={city}
-                        className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                        onClick={() => setSearchTerm(city)}
+                        className="px-3 py-2  cursor-pointer w-full text-start hover:bg-[#1aa6a4]/10 rounded-md"
+                        onClick={() => handleCity(city)}
                       >
                         {city}
-                      </div>
+                      </button>
                     ))}
                   </motion.div>
                 </Activity>
-              </AnimatePresence>
+              
 <button
   type="submit"
   className="bg-[#1aa6a4] hover:bg-[#168c8a] transition-all
@@ -386,7 +398,7 @@ useEffect(() => {
               {filteredCities.map(city => (
                 <div
                   key={city}
-                  onClick={() => setSearchTerm(city)}
+                 onClick={() => handleCity(city)}
                   className="px-3 py-4  border-b border-[#343434]/40 cursor-pointer"
                 >
                   {city}

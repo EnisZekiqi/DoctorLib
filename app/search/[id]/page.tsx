@@ -48,11 +48,17 @@ const DetailsDoctor = () => {
   }, []);
 
   // Smooth scroll to section
-  const scrollToId = (href: string) => {
-    const el = document.querySelector<HTMLElement>(href);
+const scrollToId = (href: string) => {
+  const id = href.replace("#", "");
+
+  setTimeout(() => {
+    const el = document.getElementById(id);
     if (!el) return;
+
     smootherRef.current?.scrollTo(el, true, "top top");
-  };
+  }, 150);
+};
+
 
   if (!doctorDetails) return (
     <div className="p-8 flex flex-col gap-4 items-center justify-center w-full h-screen">
