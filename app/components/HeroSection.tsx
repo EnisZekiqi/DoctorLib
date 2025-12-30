@@ -145,7 +145,11 @@ console.log('show',blobRef)
 const [searchDoc,setSearchDoc]=useState(false)
 
 useEffect(() => {
-  document.body.style.overflow = searchDoc ? "hidden" : "auto";
+  const previous = document.body.style.overflow;
+  if (searchDoc) document.body.style.overflow = "hidden";
+  return () => {
+    document.body.style.overflow = previous;
+  };
 }, [searchDoc]);
 
   if (isPending) {

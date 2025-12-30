@@ -4,7 +4,6 @@ import { UserProvider } from "./context/LanguageContext";
 import "./globals.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import ScrollWrapper from "./hook/ScrollWrapper";
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -27,11 +26,9 @@ export default function RootLayout({
         className={` ${nunito.variable} antialiased`}
       >
         <UserProvider>
-          <ScrollWrapper>
-            <Navbar />
-            {children}
-            <Footer />
-          </ScrollWrapper>
+          <Navbar />
+          {children}
+          <Footer />
         </UserProvider>
         
       </body>
