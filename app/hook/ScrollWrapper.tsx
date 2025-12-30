@@ -20,18 +20,24 @@ export default function ScrollWrapper({ children }: ScrollWrapperProps) {
   useEffect(() => {
     smootherRef.current?.kill();
 
-    smootherRef.current = ScrollSmoother.create({
-      wrapper: "#wrapper",
-      content: "#content",
-      smooth: 1.2,
-      effects: true,
-      smoothTouch: 0.1, // important for mobile
-    });
+    // Disable ScrollSmoother on small screens to preserve native touch scrolling
+    if (typeof window !== "undefined") {
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      if (!isMobile) {
+        smootherRef.current = ScrollSmoother.create({
+          wrapper: "#wrapper",
+          content: "#content",
+          smooth: 1.2,
+          effects: true,
+          smoothTouch: 0.1,
+        });
 
-    // Fix mobile Safari layout issues
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
+        // Fix mobile Safari/layout issues after init
+        setTimeout(() => {
+          ScrollTrigger.refresh();
+        }, 100);
+      }
+    }
 
     return () => {
       smootherRef.current?.kill();
