@@ -63,7 +63,7 @@ const Setup = () => {
   return (
     <section
       ref={sectionRef}
-      className="setup relative w-full min-h-full flex flex-col gap-12 sm:gap-0 md:flex-row justify-between items-center px-6 md:px-16 py-16 md:py-24 bg-[#f5f5f5] overflow-hidden"
+      className="setup relative w-full min-h-full flex flex-col gap-12 sm:gap-0 md:flex-row justify-between items-center px-6 md:px-16 py-16 md:py-24 bg-[#EFF1F1] overflow-hidden"
     >
       {/* Left text column */}
       <div className="flex flex-col items-start gap-6 max-w-lg">

@@ -36,28 +36,15 @@ const DetailsDoctor = () => {
   const [selected, setSelected] = useState(tabs[0]);
 
   // GSAP Smooth Scroll setup
-  useEffect(() => {
-    smootherRef.current = ScrollSmoother.create({
-      wrapper: "#wrapper",
-      content: "#content",
-      smooth: 1.2,
-      effects: true
-    });
-
-    return () => smootherRef.current?.kill();
-  }, []);
-
-  // Smooth scroll to section
-const scrollToId = (href: string) => {
-  const id = href.replace("#", "");
-
-  setTimeout(() => {
+  // Smooth scroll functionality disabled - using native browser scroll instead
+  const scrollToId = (href: string) => {
+    const id = href.replace("#", "");
     const el = document.getElementById(id);
-    if (!el) return;
-
-    smootherRef.current?.scrollTo(el, true, "top top");
-  }, 150);
-};
+    
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
 
   if (!doctorDetails) return (
@@ -77,7 +64,7 @@ const scrollToId = (href: string) => {
   return (
     <div id="wrapper">
       <div id="content" className="px-8 sm:px-12 md:px-24 py-8 flex flex-col items-start justify-center w-full gap-6">
-        <div className="flex flex-col md:flex-row gap-6 sm:gap-0 items-center justify-between w-full">
+        <div className="flex flex-col md:flex-row gap-6 sm:gap-0 items-start sm:items-center justify-between w-full">
           <div className="flex items-center gap-4">
             <img src={doctorDetails.image} alt={doctorDetails.name} className="w-18 sm:w-24 h-18 sm:h-24 rounded-full object-cover" />
             <div className="flex flex-col items-start gap-2">

@@ -240,7 +240,7 @@ const filteredDoctors = useMemo(() => {
       <p className="flex items-center gap-1">
         {items.clinic.address} <ChevronRight size={16} />
       </p>
-      <p className="hidden sm:flex items-center gap-1">
+      <p className={`hidden ${city.toLowerCase() === items.clinic.city ? 'text-[#1aa6a4]':''} sm:flex items-center gap-1`}>
         {items.clinic.city}
       </p>
     </div>
