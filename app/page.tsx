@@ -15,9 +15,8 @@ export default function Home() {
         <div className="h-20"></div>
         <Features />
       </div>
-     <div className="h-20"></div>
+     <div className="h-40"></div>
      <Status/>
-     <div className="h-20"></div>
      <Setup/>
      <div className="h-20"></div>
      <Professional/>

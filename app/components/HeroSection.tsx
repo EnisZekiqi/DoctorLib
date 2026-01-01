@@ -103,8 +103,7 @@ const childrenVariants={
   // wait for layout + framer-motion
   requestAnimationFrame(() => {
     setTimeout(() => {
-      const smoother = ScrollSmoother.get();
-      if (!smoother || !sectionRef.current || !blobRef.current) return;
+      if (!sectionRef.current || !blobRef.current) return;
 
       ctx = gsap.context(() => {
         gsap.from(blobRef.current, {
@@ -133,12 +132,12 @@ const childrenVariants={
       }, sectionRef);
     }, 100); // 👈 important delay
   });
-
+console.log('Animation context created:', !!ctx);
   return () => ctx?.revert();
+  
 }, []);
 
 
-console.log('show',blobRef)
 
 
 

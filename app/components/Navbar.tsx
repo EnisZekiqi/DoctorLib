@@ -10,7 +10,7 @@ const Navbar = () => {
 
     return ( 
         <>
-        <nav className="flex items-center justify-between z-[1000] p-3 sm:p-4 w-full bg-[#1aa6a4] text-[#fbfbfb]">
+        <nav className={` ${connect === '/login' ? 'hidden' : 'flex'} items-center justify-between z-[1000] p-3 sm:p-4 w-full bg-[#1aa6a4] text-[#fbfbfb]`}>
         {path.startsWith('/search') ? <Link href="/" className="block md:hidden"><ChevronLeft size={20}/></Link> : <span className="block md:hidden"><CircleQuestionMark size={20}/></span>}
             <h1 className="text-2xl font-medium italic w-full text-center md:text-start md:w-[50%]">Doctorlib</h1>
            {connect === '/login' ? 

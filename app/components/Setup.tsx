@@ -29,7 +29,7 @@ const Setup = () => {
   opacity: 0,
   scrollTrigger: {
     trigger: ".setup",
-    start: "top 110%",
+    start: "top 140%",
     end: "bottom 20%",
     scrub: true,
   }

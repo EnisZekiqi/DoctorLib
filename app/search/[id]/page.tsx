@@ -76,6 +76,8 @@ const DetailsDoctor = () => {
             <h2 className="hidden sm:block text-lg text-[#232929] font-semibold pb-2 border-b border-[#dde2e1]">Summary</h2>
             <p className="hidden sm:flex text-sm font-medium text-[#5e6e6d] items-center gap-1"><User size={14} /> Accepts new patients on Doctorlib</p>
             <button className="text-[#fbfbfb] bg-[#1aa6a4] cursor-pointer hover:bg-[#1aa6a4]/80 rounded-lg p-2 w-full text-center transition-all duration-300">Book an Appointment</button>
+
+           
           </div>
         </div>
 
@@ -134,7 +136,7 @@ const Section = ({ id, selected, tabHref, children }: { id: string, selected: Ta
 );
 
 const ChipTabs = ({ selected, setSelected, scrollToId }: { selected: Tab, setSelected: Dispatch<SetStateAction<Tab>>, scrollToId: (href: string) => void }) => (
-  <div className="sticky border-b bg-[#fbfbfb] w-full border-[#9facac] top-0 px-4 py-6 hidden sm:flex items-center flex-wrap gap-2 z-10">
+  <div className="sticky border-b bg-[#fbfbfb] w-full border-[#9facac] top-0 px-4 py-6 hidden sm:flex items-center flex-wrap  gap-2 z-10">
     {tabs.map(tab => (
       <Chip key={tab.id} tab={tab} selected={selected} setSelected={setSelected} scrollToId={scrollToId} />
     ))}
