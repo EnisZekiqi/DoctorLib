@@ -142,7 +142,7 @@ border-radius:20px;
 }
 
 .btn-primary:hover {
-  background: var(--primary-dark);
+  background: var(--primary-light);
 }
 .btn-outline {
   background: transparent;

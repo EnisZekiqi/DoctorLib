@@ -22,15 +22,15 @@ const Footer = () => {
 
   console.log("footer user:",user);
 
+  console.log('clikced footer',clicked)
+
     return ( 
         <footer className={` ${remove === '/login' ? 'hidden' :'flex'} flex flex-col items-start gap-6 py-6 bg-[#fbfbfb] border border-t-[#dde2e1] w-full`}>
         
         <div className="flex flex-col md:flex-row items-center justify-between w-full px-8 sm:px-16 mt-12">
             <div className="flex flex-col md:flex-row items-center gap-1.5">
                 <h1 className="text-2xl font-medium italic">Doctorlib</h1>
-                <p className="text-sm font-normal text-[#5e6e6d]">
-                    Copyright © {new Date().getFullYear()} Doctolib, all rights reserved.
-                </p>
+                
             </div>
             <div className="flex items-center gap-1 mt-3 md:mt-0">
                 <motion.div 

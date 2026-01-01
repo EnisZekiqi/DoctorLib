@@ -112,7 +112,7 @@ const filteredDoctors = useMemo(() => {
             if (searchTerm.trim()) params.set('city', searchTerm.trim());
             router.push(`/search?${params.toString()}`);
           }}
-          className="flex items-center w-[75%] gap-2 border border-[#1aa6a4] justify-between bg-white rounded-2xl p-1 sm:p-2 shadow-xl shadow-black/10 backdrop-blur-md">
+          className="flex items-center w-[75%] gap-2 mt-8 border border-[#1aa6a4] justify-between bg-white rounded-2xl p-1 sm:p-2 shadow-xl shadow-black/10 backdrop-blur-md">
             <div className="flex items-center gap-2.5 w-[43.5%]">
             
              <Search  size={18} color="#5e6e6d"/>

@@ -7,8 +7,13 @@ import { useState,useMemo,Activity,useTransition, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
-import {ScrollSmoother} from "gsap/ScrollSmoother";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register GSAP plugins on the client only
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+}
 import data from '@/db.json'
 import Link from "next/link";
 
@@ -98,43 +103,29 @@ const childrenVariants={
   const blobRef = useRef(null);
 
   useLayoutEffect(() => {
-  let ctx: gsap.Context | undefined;
+  if (!sectionRef.current || !blobRef.current) return;
 
-  // wait for layout + framer-motion
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      if (!sectionRef.current || !blobRef.current) return;
+  const ctx = gsap.context(() => {
+    gsap.from(blobRef.current, {
+      opacity: 0,
+      duration: 0.6,
+      ease: "power3.out",
+    });
 
-      ctx = gsap.context(() => {
-        gsap.from(blobRef.current, {
-          opacity: 0,
-          duration: 0.5,
-          ease: "power3.out",
-        });
+    gsap.to(blobRef.current, {
+      y: 80,
+      opacity: 0,
+      scale: 0.85,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+  }, sectionRef);
 
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "bottom 5%",
-            scrub: 0.8,
-            pin: blobRef.current,
-          },
-        }).to(blobRef.current, {
-          x: 120,
-          y: 40,
-          opacity: 0,
-          scale: 0.8,
-          ease: "power2.out",
-        });
-
-        ScrollTrigger.refresh();
-      }, sectionRef);
-    }, 100); // 👈 important delay
-  });
-console.log('Animation context created:', !!ctx);
-  return () => ctx?.revert();
-  
 }, []);
 
 
@@ -165,10 +156,10 @@ useEffect(() => {
 
 
     return ( 
-        <section ref={sectionRef} className="section1 bg-[#eff1f1] min-h-[600px] md:h-[600px] w-full overflow-hidden sm:relative flex items-center">
+        <section ref={sectionRef} className="section1 bg-[#eff1f1] min-h-screen md:h-[600px] w-full overflow-hidden sm:relative flex items-center">
         <div className="h-20"></div>
 <div className="    flex flex-col-revers emd:flex-row items-center justify-between px-10 gap-12 ">
-        <div className="flex flex-col items-center md:items-start gap-4 pl-0">
+        <div className="flex flex-col relative items-center md:items-start gap-4 pl-0">
          <motion.h1 
          initial={{opacity:0,y:-15}}
          animate={{opacity:1,y:0,transition:{duration:0.3,delay:0}}}
@@ -208,7 +199,7 @@ useEffect(() => {
     bg-white
     rounded-2xl
     p-2 h-[55px]
-    shadow-xl"
+    shadow-xl z-100"
 >
             <div className="flex items-center gap-2.5">
             
@@ -300,12 +291,16 @@ useEffect(() => {
 </motion.div>
 
        </div>
-       
-        <div className=" hidden md:block relative  w-[750px] h-[650px]">
+       <div className="absolute top-[20%] sm:top-[35%] sm:left-[40%] w-10 h-10 sm:w-20 sm:h-20 bg-[#1aa6a4]/90 rounded-full blur-[3px]">
+        <div className="absolute left-2.5  top-2.5 w-5 h-5 sm:w-15 sm:h-15 rounded-full bg-[#eff1f1] "></div>
+       </div>
+        <div className=" hidden md:block relative  w-[750px] h-[750px]">
 
   {/* Background decorative circles */}
   <div className="absolute inset-0 rounded-full bg-[#1aa6a4]/20 blur-3xl" />
-  <div ref={blobRef} className="blobs absolute -top-10 -left-10 w-40 h-40 rounded-full bg-[#1aa6a4]/30 z-[1000]" />
+  <div ref={blobRef} className="blobs absolute top-25 left-40 w-30 h-30 rounded-full bg-[#c9f6f6]/30 z-[2000]" >
+  <div className="w-25 h-25 rounded-full ml-2.5 mt-2 bg-[#1aa6a4] "></div>
+  </div>
 
   {/* Rotated image container */}
   <motion.div
@@ -318,7 +313,6 @@ useEffect(() => {
       bg-[#1aa6a4]
       rounded-[48px]
       overflow-hidden
-      z-[1000]
       shadow-2xl
     "
   >
@@ -330,8 +324,8 @@ useEffect(() => {
       animate={{ scale: 1, rotate: 6 }}
       transition={{ duration: 0.8 }}
       className="
-        absolute -bottom-16 right-0
-        w-[110%] h-auto rotate-6
+        absolute -bottom-20 right-0
+        w-[110%] h-auto rotate-8
         object-cover
       "
     />
