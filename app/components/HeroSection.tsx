@@ -145,16 +145,19 @@ useEffect(() => {
     return ( 
         <section ref={sectionRef} className="section1 bg-[#eff1f1] min-h-screen md:h-[600px] w-full overflow-hidden sm:relative flex items-center">
         <div className="h-20"></div>
-<div className="    flex flex-col-revers emd:flex-row items-center justify-between px-10 gap-12 ">
+<div className="    flex flex-col-revers emd:flex-row items-center justify-between px-4 sm:px-6 gap-6 sm:gap-10 ">
         <div className="flex flex-col relative items-center md:items-start gap-4 pl-0">
          <motion.h1 
          initial={{opacity:0,y:-15}}
          animate={{opacity:1,y:0,transition:{duration:0.3,delay:0}}}
-         className="text-3xl
+         className="  text-3xl
   sm:text-4xl
   lg:text-5xl
   font-semibold
-  text-[#232929]">Live a <b className="font-semibold text-[#5e6e6d]">healthier life</b></motion.h1>
+  text-[#232929]
+  text-center md:text-left
+  max-w-[22ch]
+  ">Live a <b className="font-semibold text-[#5e6e6d]">healthier life</b></motion.h1>
           <motion.p
   initial={{ opacity: 0, y: -10 }}
   animate={{ opacity: 1, y: 0 }}
@@ -171,8 +174,23 @@ useEffect(() => {
        initial={{opacity:0,y:-15}}
          animate={{opacity:1,y:0,transition:{duration:0.3,delay:0.2}}}
       className="flex items-center justify-center w-full">
-              <button className="p-2 rounded-lg bg-[#fbfbfb] text-[#1aa6a4] border border-[#1aa6a4] flex md:hidden items-center justify-center gap-4 w-full cursor-pointer" onClick={()=>setSearchDoc(true)}><Search size={20}/> Search Doctors</button>
-      </motion.div>
+<button className="
+  md:hidden
+  w-full
+  py-3
+  rounded-xl
+  bg-[#1aa6a4]
+  text-white
+  font-medium
+  shadow-lg
+  flex items-center justify-center gap-3
+"
+onClick={()=>setSearchDoc(true)}
+>
+  <Search size={20} />
+  Search doctors
+</button>     
+ </motion.div>
          <motion.form
          initial={{opacity:0,y:-15}}
          animate={{opacity:1,y:0,transition:{duration:0.3,delay:0.3}}}
@@ -331,11 +349,11 @@ useEffect(() => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="fixed inset-0 z-50 bg-[#fbfbfb] flex flex-col p-4"
+      className="fixed inset-0 z-[1000] bg-[#fbfbfb] flex flex-col p-4"
     >
       <div className="flex justify-between items-center">
           <h1 className="text-xl font-medium text-[#1aa6a4]">
-            Doctorlib
+            MyDoc
           </h1>
           <button onClick={() => setSearchDoc(false)}>
             <X />

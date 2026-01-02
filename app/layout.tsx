@@ -11,7 +11,7 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "DoctorLib",
+  title: "MyDoc",
   description: "Find and book appointments with verified doctors easily.",
 };
 
