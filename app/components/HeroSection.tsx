@@ -16,6 +16,7 @@ if (typeof window !== "undefined") {
 }
 import data from '@/db.json'
 import Link from "next/link";
+import { blob } from "stream/consumers";
 
 const HeroSection = () => {
 
@@ -101,30 +102,16 @@ const childrenVariants={
 
  const sectionRef = useRef(null);
   const blobRef = useRef(null);
+  const blob2Ref = useRef(null);
 
   useLayoutEffect(() => {
-  if (!sectionRef.current || !blobRef.current) return;
+  gsap.fromTo(blobRef.current,
+    {opacity:0.5, scale:0.8},
+    {opacity:1, scale:1, duration:1.5, ease:"sine.inOut", repeat:-1, yoyo:true})
 
-  const ctx = gsap.context(() => {
-    gsap.from(blobRef.current, {
-      opacity: 0,
-      duration: 0.6,
-      ease: "power3.out",
-    });
-
-    gsap.to(blobRef.current, {
-      y: 80,
-      opacity: 0,
-      scale: 0.85,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
-  }, sectionRef);
+  gsap.fromTo(blob2Ref.current,
+    {opacity:0.5, scale:0.8},
+    {opacity:1, scale:1, duration:1.5, ease:"sine.inOut", repeat:-1, yoyo:true, delay:0.75});
 
 }, []);
 
@@ -231,8 +218,8 @@ useEffect(() => {
                       transition: { duration: 0.35 },
                     }}
                     className=" absolute
-  top-[58%]
-  left-[18%]
+  top-[68%]
+  left-[38%]
   w-full
   sm:w-[240px] bg-white rounded-lg shadow-lg border border-gray-200 z-20 p-2"
                   >
@@ -291,14 +278,14 @@ useEffect(() => {
 </motion.div>
 
        </div>
-       <div className="absolute top-[20%] sm:top-[35%] sm:left-[40%] w-10 h-10 sm:w-20 sm:h-20 bg-[#1aa6a4]/90 rounded-full blur-[3px]">
+       <div ref={blob2Ref} className="absolute top-[20%] sm:top-[35%] sm:left-[40%] w-10 h-10 sm:w-20 sm:h-20 bg-[#1aa6a4]/90 rounded-full blur-[3px]">
         <div className="absolute left-2.5  top-2.5 w-5 h-5 sm:w-15 sm:h-15 rounded-full bg-[#eff1f1] "></div>
        </div>
         <div className=" hidden md:block relative  w-[750px] h-[750px]">
 
   {/* Background decorative circles */}
   <div className="absolute inset-0 rounded-full bg-[#1aa6a4]/20 blur-3xl" />
-  <div ref={blobRef} className="blobs absolute top-25 left-40 w-30 h-30 rounded-full bg-[#c9f6f6]/30 z-[2000]" >
+  <div ref={blobRef} className="blobs blur-sm absolute top-25 left-40 w-30 h-30 rounded-full bg-[#c9f6f6]/30 z-[2000]" >
   <div className="w-25 h-25 rounded-full ml-2.5 mt-2 bg-[#1aa6a4] "></div>
   </div>
 

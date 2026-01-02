@@ -7,10 +7,20 @@ const Navbar = () => {
     const path = usePathname()
 
     const connect=path;
+const isSearch = connect.startsWith('/search');
 
     return ( 
-        <section className={` ${connect.startsWith('/search')  ? 'static bg-[#1aa6a4]':'p-6 bg-[#1aa6a4] sm:bg-transparent absolute top-0 z-1000 '} w-full`}>
-        <nav className={` ${connect === '/login' ? 'hidden' : 'flex'}  ${connect.startsWith('/search') 
+<section
+  className={`
+    w-full
+    ${isSearch ? 'p-1.5' : 'p-1.5 sm:p-6'}
+    ${isSearch
+      ? 'static bg-[#1aa6a4]'
+      : 'absolute top-0 z-1000 bg-[#1aa6a4] sm:bg-transparent'
+    }
+  `}
+
+>        <nav className={` ${connect === '/login' ? 'hidden' : 'flex'}  ${connect.startsWith('/search') 
       ? 'bg-[#1aa6a4] text-[#fbfbfb]' 
       : 'bg-[#1aa6a4] sm:bg-[#EFF1F1] text-[#fbfbfb] sm:text-black'}   items-center justify-between z-[1000] rounded-2xl p-2 sm:p-4 w-full  text-[#000]`}>
         {path.startsWith('/search') ? <Link href="/" className="block md:hidden"><ChevronLeft size={20}/></Link> : <span className="block md:hidden"><CircleQuestionMark size={20}/></span>}
