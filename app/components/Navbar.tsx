@@ -18,6 +18,7 @@ const isSearch = connect.startsWith('/search');
       ? 'static bg-[#1aa6a4]'
       : 'absolute top-0 z-1000 bg-[#1aa6a4] sm:bg-transparent'
     }
+    ${connect === '/login' ? 'hidden' : 'block'}
   `}
 
 >        <nav className={` ${connect === '/login' ? 'hidden' : 'flex'}  ${connect.startsWith('/search') 

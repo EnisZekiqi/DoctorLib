@@ -8,41 +8,27 @@ import gsap from "gsap";
 
 const LogIn = () => {
 
-    const [steps,setSteps]=useState('step1')
     const [signUp,setSignUp]=useState({email:'',first:'',last:'',dobDay:'',dobMonth:'',dobYear:'',gender:'',password:''})
     const [ifLogin,setIfLogin]=useState(false)
-  useEffect(() => {
-  if (
-    signUp.email.trim() !== '' &&
-    signUp.first.trim() !== '' &&
-    signUp.last.trim() !== '' &&
-    signUp.password.trim() !== ''
-  ) {
-    setSteps('step3');
-  } else if (
-    signUp.email.trim() !== '' &&
-    signUp.first.trim() !== '' &&
-    signUp.last.trim() !== ''
-  ) {
-    setSteps('step2');
-  } else {
-    setSteps('step1');
-  }
-}, [signUp]);
+  
+    const getStep =(signUp:any)=>{
+        if (signUp.email && signUp.first && signUp.last && signUp.password) {
+    return 'step3';
+      }
+      if (signUp.email && signUp.first && signUp.last) {
+    return 'step2';
+     }
+     return 'step1';
+};
+    
+
+    const step = getStep(signUp);
 
     const blobRef = useRef(null);
     const blob2Ref = useRef(null);
+
 useLayoutEffect(() => {
-  gsap.fromTo('.login-section',{
-    opacity:0,
-    y:30
-  },{
-    opacity:1,
-    y:0,
-    duration:0.5, 
-    stagger:0.1,
-    ease:'power2.out'
-  })
+
     gsap.fromTo(blobRef.current,
       {opacity:0.5, scale:0.8},
       {opacity:1, scale:1, duration:1.5, ease:"sine.inOut", repeat:-1, yoyo:true})
@@ -53,22 +39,66 @@ useLayoutEffect(() => {
 
 },[])
 
-const [requirementMet,setRequirementMet]=useState('')
 
+const isFormFilled =(signUp:any)=>{
+  return (
+    signUp.email.trim() !== '' &&
+    signUp.first.trim() !== '' &&
+    signUp.last.trim() !== '' &&
+    signUp.password.trim() !== ''
+  )
+}
 
+const getEmailRequirement = (email:any) => {
+  if (!email) return '';
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email) ? 'Valid email ✓' : 'Invalid email format';
+}
 
-useEffect(() => {
-  if (!signUp.password) {
-    setRequirementMet('');
-  } else if (signUp.password.length < 8) {
-    setRequirementMet('At least 8 characters');
-  } else if (!/[A-Z]/.test(signUp.password) || !/\d/.test(signUp.password)) {
-    setRequirementMet('At least one uppercase letter and one number');
-  } else {
-    setRequirementMet('Strong password ✓');
+const emailRequirement = getEmailRequirement(signUp.email);
+
+const getPasswordRequirement = (password:any) => {
+  if (!password) return '';
+  if (password.length < 8) return 'At least 8 characters';
+  if (!/[A-Z]/.test(password) || !/\d/.test(password)) {
+    return 'At least one uppercase letter and one number';
   }
-}, [signUp.password]);
+  return 'Strong password ✓';
+};
 
+const requirementMet = getPasswordRequirement(signUp.password);
+
+
+const canSubmitSignup = (signUp:any) => {
+  if (!isFormFilled(signUp)) return false;
+  if (getEmailRequirement(signUp.email) !== 'Valid email ✓') return false;
+  if (getPasswordRequirement(signUp.password) !== 'Strong password ✓') return false;
+  return true;
+}
+
+const submitToDatabase = (signUp:any) => {
+  
+  console.log('Submitting to database:', signUp);
+}
+const handleSubmit = (e:any) => {
+  e.preventDefault();
+
+  if (ifLogin) {
+    handleLogIn();
+    return;
+  }
+
+  if (!canSubmitSignup(signUp)) return;
+
+  submitToDatabase(signUp);
+};
+
+
+const handleLogIn = () => {
+  console.log('Logging in with:', signUp.email, signUp.password);
+}
+
+const canSubmit = canSubmitSignup(signUp);
 
 return (
    <section className="flex flex-col md:flex-row min-h-screen bg-gradient-to-br from-[#e0f7f7] to-[#fbfbfb]">
@@ -86,18 +116,18 @@ return (
   {/* New animated features */}
   <div className="flex items-start gap-6">
     <div className="w-1 h-full bg-[#137a78]">
-      <span className={`w-1 transition-all duration-500 block ${steps === 'step1' ? 'h-1/3' : steps === 'step2' ? 'h-2/3' : 'h-full'} bg-[#eff1f1]/70`}></span>
+      <span className={`w-1 transition-all duration-500 block ${step === 'step1' ? 'h-1/3' : step === 'step2' ? 'h-2/3' : 'h-full'} bg-[#eff1f1]/70`}></span>
     </div>
     <div className="flex flex-col gap-6 mt-0">
-    <div className={`transition-all duration-500 feature-item ${steps === 'step1' ? 'opacity-100' : 'opacity-50'}`} id="feature1">
+    <div className={`transition-all duration-500 feature-item ${step === 'step1' ? 'opacity-100' : 'opacity-50'}`} id="feature1">
       <h3 className="text-lg font-semibold">Enter Your Email</h3>
       <p className="text-[14px] opacity-80">Start by providing your email address.</p>
     </div>
-    <div className={`transition-all duration-500 feature-item ${steps === 'step1' ? 'opacity-50' : steps === 'step2' ? 'opacity-100' : 'opacity-50'}`} id="feature2">
+    <div className={`transition-all duration-500 feature-item ${step === 'step1' ? 'opacity-50' : step === 'step2' ? 'opacity-100' : 'opacity-50'}`} id="feature2">
       <h3 className="text-lg font-semibold">Complete Your Profile</h3>
       <p className="text-[14px] opacity-80">Add your personal details and information.</p>
     </div>
-    <div className={`transition-all duration-500 feature-item ${steps === 'step3' ? 'opacity-100' : 'opacity-50'}`} id="feature3">
+    <div className={`transition-all duration-500 feature-item ${step === 'step3' ? 'opacity-100' : 'opacity-50'}`} id="feature3">
       <h3 className="text-lg font-semibold">Set Your Password</h3>
       <p className="text-[14px] opacity-80">Create a strong password to secure your account.</p>
     </div>
@@ -117,7 +147,7 @@ return (
 
 
   {/* RIGHT SIDE - Forms */}
-  <div className="flex-1 flex items-center justify-center p-8">
+  <div className="flex-1 flex items-center justify-center p-[20px]">
     <AnimatePresence mode="wait">
      <motion.div
     key={String(ifLogin)}
@@ -134,6 +164,7 @@ return (
         <div>
           <label className="block text-xs font-medium text-gray-700 mb-1">Email</label>
           <input value={signUp.email} onChange={(e) => setSignUp(p => ({ ...p, email: e.target.value }))} type="email" placeholder="Email" className="p-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1aa6a4] w-full" />
+          <h1 className={`text-xs mt-1.5 font-medium ${emailRequirement === 'Valid email ✓' ? 'text-green-500' : 'text-red-500'}`}>{emailRequirement}</h1>
         </div>
        {ifLogin ?   
         <div>
@@ -185,7 +216,7 @@ return (
           <input value={signUp.password} onChange={(e)=>setSignUp(p=>({...p , password:e.target.value}))} type="password" placeholder="Password" className="p-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1aa6a4] w-full" />
         </div>:''}
         <h1 className={`text-xs font-medium ${requirementMet.startsWith('At least 8') ? 'text-red-500': requirementMet.startsWith('At least one') ? 'text-yellow-500':'text-green-500'}  `}>{requirementMet}</h1>
-        <button className="bg-[#1aa6a4] text-white py-3 rounded-lg mt-0 hover:bg-[#137a78] transition"> {ifLogin ? 'Log In' : 'Sign Up'} </button>
+        <button  onClick={(e) => handleSubmit(e)} className="bg-[#1aa6a4] text-white py-3 rounded-lg mt-0 hover:bg-[#137a78] transition"> {ifLogin ? 'Log In' : 'Sign Up'} </button>
       </form>
 
       <p className="text-xs text-center mt-4 text-gray-400">
