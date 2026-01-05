@@ -107,7 +107,7 @@ const childrenVariants={
   useLayoutEffect(() => {
   gsap.fromTo(blobRef.current,
     {opacity:0.5, scale:0.8},
-    {opacity:1, scale:1, duration:1.5, ease:"sine.inOut", repeat:-1, yoyo:true})
+    {opacity:1, scale:1, duration:1.5,delay:1, ease:"sine.inOut", repeat:-1, yoyo:true})
 
   gsap.fromTo(blob2Ref.current,
     {opacity:0.5, scale:0.8},

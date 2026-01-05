@@ -29,19 +29,10 @@ const Footer = () => {
         
         <div className="flex flex-col md:flex-row items-center justify-between w-full px-8 sm:px-16 mt-12">
             <div className="flex flex-col md:flex-row items-center gap-1.5">
-                <h1 className="text-2xl font-medium italic">Doctorlib</h1>
+                <h1 className="text-2xl font-medium italic">MyDoc</h1>
                 
             </div>
-            <div className="flex items-center gap-1 mt-3 md:mt-0">
-                <motion.div 
-           initial={{opacity:0,y:0}}
-           whileInView={{opacity:1,y:0,transition:{duration:0.3,delay:0.4}}}
-           viewport={{once:true,amount:0.3}}
-           className="flex items-center gap-1 h-fit">
-            <img src="https://www.doctolib.fr/webpack/fb1a5edb01a13f9cd007.png" className="w-28 h-fit object-contain" alt="" />
-            <img src="https://www.doctolib.fr/webpack/6a80b8c10b3bad0a3a16.png" className="w-28 h-fit object-contain" alt="" />
-           </motion.div>
-            </div>
+            
         </div>
         <div className="flex items-center justify-between w-full px-16">
            <div className="flex flex-col md:flex-row items-start md:items-center gap-1.5">
@@ -66,7 +57,7 @@ const Footer = () => {
         <span className="bg-[#1aa6a4] rounded-lg p-1"><Youtube color="#c9f6f6"/></span>
         </div>
         </div>
-        <div className="h-40"></div>
+        <div className="h-20"></div>
         </footer>
      );
 }
@@ -105,7 +96,7 @@ const FooterSelect = ({ user, setUser }: FooterSelectProps) => {
       <AnimatePresence>
         {open && (
           <motion.ul
-            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            initial={{ opacity: 0, y: 10, scale: 0.95 }}
             animate={{
               opacity: 1,
               y: 0,

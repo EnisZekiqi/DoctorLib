@@ -1,6 +1,6 @@
 'use client'
 
-import { Eye, EyeClosed} from "lucide-react";
+import { Eye, EyeClosed,ClipboardClock,Lock,Zap} from "lucide-react";
 import { useState,useEffect,useLayoutEffect,useRef } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
@@ -8,9 +8,10 @@ import gsap from "gsap";
 import axios from "axios";
 
 const LogIn = () => {
-    const [signUp,setSignUp]=useState({email:'',first:'',last:'',dobDay:null as number | null,dobMonth:'',dobYear:null as number | null,gender:'',password:''})
+    const [signUp,setSignUp]=useState({ email:'',first:'',last:'',dobDay:null as number | null,dobMonth:'',dobYear:null as number | null,gender:'',password:''})
     const [ifLogin,setIfLogin]=useState(false)
     const [showPw,setShowPw]=useState(false)
+    const [loaderState, setLoaderState] = useState(false);
 
     const getStep =(signUp:any)=>{
         if (signUp.email && signUp.first && signUp.last && signUp.password) {
@@ -81,13 +82,25 @@ const canSubmitSignup = (signUp:any) => {
   return true;
 }
 
+
 const submitToDatabase = async (signUp: any) => {
+  setLoaderState(true);
+ 
   try {
     const res = await axios.post(
       'http://localhost:3002/inventory',
       signUp
     );
 
+      setSignUp(prev => ({
+      ...prev,
+      id: res.data.id,
+    }));
+   
+  setTimeout(() => {
+      setLoaderState(false);
+    }, 3000);   
+   
     console.log('Submitted successfully:', res.data);
   } catch (error) {
     console.error('Error submitting to database:', error);
@@ -105,7 +118,7 @@ const handleSubmit = (e:any) => {
 
   submitToDatabase(signUp);
 
-  setSignUp({email:'',first:'',last:'',dobDay:null,dobMonth:'',dobYear:null,gender:'',password:''});
+  setSignUp({  email:'',first:'',last:'',dobDay:null,dobMonth:'',dobYear:null,gender:'',password:''});
 };
 
 
@@ -137,10 +150,10 @@ const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i
 
 const changeForm =() =>{
   setIfLogin(v=>!v)
-  setSignUp({email:'',first:'',last:'',dobDay:null,dobMonth:'',dobYear:null,gender:'',password:''});
+  setSignUp({  email:'',first:'',last:'',dobDay:null,dobMonth:'',dobYear:null,gender:'',password:''});
+  setShowPw(false)
 }
 
-const canSubmit = canSubmitSignup(signUp);
 
 return (
    <section className="flex flex-col md:flex-row min-h-screen bg-gradient-to-br from-[#e0f7f7] to-[#fbfbfb]">
@@ -156,7 +169,40 @@ return (
   </div>
 
   {/* New animated features */}
-  <div className="flex items-start gap-6">
+ <AnimatePresence mode="wait">
+   {ifLogin ?  
+  <motion.div
+  key={String(ifLogin)}
+  initial={{opacity:0,y:30}}
+  animate={{opacity:1,y:0}}
+  exit={{opacity:0,y:30}}
+  transition={{ duration: 0.5 }}
+  className="flex flex-col gap-6">
+    
+
+    <h3 className="text-xl w-2/4 font-semibold">
+      Log in to access your appointments, medical records, and personalized care.
+    </h3>
+
+    <ul className="flex flex-col gap-4 text-sm">
+      <li className="flex text-[15px] text-[#fbfbfb]/70 font-medium items-center gap-3">
+       <ClipboardClock color="#fbfbfb"/> View upcoming appointments
+      </li>
+      <li className="flex text-[15px] text-[#fbfbfb]/70 font-medium items-center gap-3">
+        <Lock color="#fbfbfb"/> Secure & private health data
+      </li>
+      <li className="flex text-[15px] text-[#fbfbfb]/70 font-medium items-center gap-3">
+        <Zap color="#fbfbfb"/> Fast access to your dashboard
+      </li>
+    </ul>
+  </motion.div>
+   :<motion.div
+  key={String(ifLogin)}
+   initial={{opacity:0,y:30}}
+  animate={{opacity:1,y:0}}
+  exit={{opacity:0,y:30}}
+  transition={{ duration: 0.5 }}
+   className="flex items-start gap-6">
     <div className="w-1 h-full bg-[#137a78]">
       <span className={`w-1 transition-all duration-500 block ${step === 'step1' ? 'h-1/3' : step === 'step2' ? 'h-2/3' : 'h-full'} bg-[#eff1f1]/70`}></span>
     </div>
@@ -174,7 +220,9 @@ return (
       <p className="text-[14px] opacity-80">Create a strong password to secure your account.</p>
     </div>
   </div>
-  </div>
+  </motion.div>}
+  
+ </AnimatePresence>
 
   {/* Optional: subtle background shapes */}
   <div className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full bg-white/10 blur-3xl"></div>
@@ -202,7 +250,7 @@ return (
       <h2 className="text-2xl font-semibold mb-3">{ifLogin ? 'Welcome Back' : 'Create Account'}</h2>
       <p className="text-sm text-gray-500 mb-6">{ifLogin ? 'Log in to continue' : 'Fill in your details to get started'}</p>
 
-      <form className=" flex flex-col gap-4">
+      <form onSubmit={(e) => handleSubmit(e)} className=" flex flex-col gap-4">
         <div>
           <label className="block text-xs font-medium text-gray-700 mb-1">Email</label>
           <input value={signUp.email} onChange={(e) => setSignUp(p => ({ ...p, email: e.target.value }))} type="email" placeholder="Email" className="p-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1aa6a4] w-full" />
@@ -294,7 +342,7 @@ return (
 </div>        
 </div>:''}
           {ifLogin ? '' : <h1 className={`text-xs font-medium ${requirementMet.startsWith('At least 8') ? 'text-red-500': requirementMet.startsWith('At least one') ? 'text-yellow-500':'text-green-500'}  `}>{requirementMet}</h1>}
-        <button  onClick={(e) => handleSubmit(e)} className="bg-[#1aa6a4] text-white py-3 rounded-lg mt-0 hover:bg-[#137a78] transition"> {ifLogin ? 'Log In' : 'Sign Up'} </button>
+        <button   type="submit" className="bg-[#1aa6a4] text-white py-3 rounded-lg mt-0 hover:bg-[#137a78] transition"> {loaderState ? <span className="loader"></span> : ifLogin ? 'Log In' : 'Sign Up'} </button>
       </form>
 
       <p className="text-xs text-center mt-4 text-gray-400">
