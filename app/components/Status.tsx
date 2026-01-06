@@ -1,51 +1,88 @@
 "use client";
 
-
 import { useRef, useEffect, useState } from "react";
 import { animate, useInView, useMotionValue } from "framer-motion";
-
-
+import { ArrowDownRight } from "lucide-react";
+import { motion } from "framer-motion";
 const Status = () => {
   return (
-    <section className="w-full py-10 ">
-      <div className="max-w-5xl mx-auto text-center">
+    <section className="w-full py-16 bg-[#eff1f1] px-6 md:px-16">
+      <div className="w-full mx-auto px-4">
         
-        <h2 className="text-2xl font-semibold text-[#232929] mb-12">
-          Doctolib by the numbers
-        </h2>
+        {/* Section title */}
+        
 
-        <div className="grid grid-cols-1 md:grid-cols-3  gap-10">
+        {/* Main layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
+          
+          {/* LEFT — Context */}
+          <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          >
+            <h3 className="text-2xl md:text-4xl font-semibold text-[#232929] mb-4">
+              Trusted healthcare, at scale
+            </h3>
 
-          {/* Stat 1 */}
-          <div className="flex flex-col items-center">
-            <p className="text-4xl font-bold text-[#1aa6a4]">
-              <CountUp from={0} to={90000000} duration={2} />+
+            <p className="text-[#5e6e6d] max-w-md leading-relaxed">
+              MyDoc connects patients and healthcare professionals through a
+              secure platform built for everyday medical needs — from discovery
+              to appointment management.
             </p>
-            <p className="text-gray-600 mt-2">people getting better care</p>
-          </div>
+          </motion.div>
 
-          {/* Stat 2 */}
-          <div className="flex flex-col items-center">
-            <p className="text-4xl font-bold text-[#1aa6a4]">
-              <CountUp from={0} to={420000} duration={2} />+
-            </p>
-            <p className="text-gray-600 mt-2">health professionals</p>
-          </div>
+          {/* RIGHT — Stats */}
+          <div className="grid grid-cols-2 gap-10">
+            
+            <StatItem
+              value={900000}
+              label="people getting better care"
+            />
 
-          {/* Stat 3 */}
-          <div className="flex flex-col items-center">
-            <p className="text-4xl font-bold text-[#1aa6a4]">
-              <CountUp  from={0} to={10000000} duration={2} />+
-            </p>
-            <p className="text-gray-600 mt-2">documents shared every month</p>
-          </div>
+            <StatItem
+              value={42000}
+              label="health professionals"
+            />
 
+            <StatItem
+              value={100000}
+              label="documents shared monthly"
+            />
+
+            {/* Softer supporting stat */}
+             <StatItem
+              value={6500}
+              label="Appointment success rate"
+            />
+
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
+
+type StatItemProps = {
+  value: number;
+  label: string;
+};
+
+const StatItem = ({ value, label }: StatItemProps) => {
+  return (
+    <div className="flex flex-col gap-1">
+      <ArrowDownRight className="w-5 h-5 text-[#849595]" />
+      <p className="text-2xl sm:text-3xl font-bold text-[#232929]">
+        <CountUp from={0} to={value} duration={2} />+
+      </p>
+      <p className="text-xs text-[#849595]">
+        {label}
+      </p>
+    </div>
+  );
+};
 
 type CountProps ={
     from:number,

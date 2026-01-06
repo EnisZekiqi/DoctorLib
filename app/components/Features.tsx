@@ -30,34 +30,65 @@ const Features = () => {
     }
 
     const cards=[
-        {id:1,title:'Verified Professionals',describe:'All doctors on DoctorLib are fully verified and approved, ensuring accurate information and quality care.',icon:<ShieldCheck size={35} color='#c9f6f6'/>},
-        {id:2,title:'Simple Online Appointment',describe:'Book appointments in seconds with our intuitive scheduling system — no calls, no waiting.',icon:<ClipboardClock size={35} color='#c9f6f6'/>},
-        {id:3,title:'Trusted Patient Reviews',describe:'Read real reviews from patients and make informed decisions before booking.',icon:<Star size={35} color='#c9f6f6'/>},
+        {id:1,title:'Verified Professionals',describe:'All doctors on DoctorLib are fully verified and approved, ensuring accurate information and quality care.',icon:<ShieldCheck size={35} color='#1aa6a4'/>},
+        {id:2,title:'Simple Online Appointment',describe:'Book appointments in seconds with our intuitive scheduling system — no calls, no waiting.',icon:<ClipboardClock size={35} color='#1aa6a4'/>},
+        {id:3,title:'Trusted Patient Reviews',describe:'Read real reviews from patients and make informed decisions before booking.',icon:<Star size={35} color='#1aa6a4'/>},
     ]
 
     return ( 
         <motion.section 
-            className="flex flex-col md:flex-row gap-8 md:gap-0 items-center justify-center w-full"
+            className=" grid grid-cols-1 md:grid-cols-3
+    gap-8
+    w-full mx-auto
+    px-4 items-center justify-center justify-items-center"
             variants={containerVariants}
             initial="initial"
             whileInView="animate"
             viewport={{once:true,amount:0.2}}
         >
         {cards.map((items)=>(
-            <motion.div 
-                className='flex flex-col items-center gap-4' 
-                key={items.id}
-                variants={itemVariants}
-            >
-                <div className="relative z-[100] mb-2 mt-1">
-                    {items.icon}
-                </div>
-                <span className='absolute -mt-5 z-10'>
-                    <img src="/blob2.svg" className='w-32 rotate-90' alt="" />
-                </span>
-                <h2 className='text-[#232929] font-medium text-lg'>{items.title}</h2>
-                <p className='text-[#5e6e6d] text-medium font-normal text-center w-3/4'>{items.describe}</p>
-            </motion.div>
+           <motion.div
+  key={items.id}
+  variants={itemVariants}
+  whileHover={{ y: -6 }}
+  className="
+    group
+    flex flex-col items-center text-center
+    px-6 py-8
+    max-w-sm
+    h-[250px]
+    rounded-2xl
+    border border-[#e6eeee]
+    bg-[#fbfbfb]/80 backdrop-blur
+    shadow-sm
+    transition-all duration-300
+    hover:shadow-lg hover:border-[#c9f6f6]
+  "
+>
+  {/* Icon */}
+  <div className="
+    mb-4
+    flex items-center justify-center
+    w-14 h-14
+    rounded-full
+    bg-gradient-to-br from-[#c9f6f6] to-[#9ee7e7]
+    shadow-md
+    group-hover:scale-105
+    transition-transform
+  ">
+    {items.icon}
+  </div>
+
+  {/* Title */}
+  <h2 className="text-[#232929] font-semibold text-lg mb-2">
+    {items.title}
+  </h2>
+
+  {/* Description */}
+  <p className="text-[#5e6e6d] text-sm leading-relaxed">
+    {items.describe}
+  </p>
+</motion.div>
         ))}
         </motion.section>
      );

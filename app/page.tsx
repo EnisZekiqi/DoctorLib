@@ -7,6 +7,7 @@ import Mobile from "./components/Mobile";
 import Professional from "./components/Professional";
 import Footer from "./components/Footer";
 import Setup from "./components/Setup";
+import ProfessionalV2 from "./components/ProfessionalV2";
 export default function Home() {
   return (
     <div className="flex flex-col h-full bg-[#eff1f1]">
@@ -19,7 +20,7 @@ export default function Home() {
      <Status/>
      <Setup/>
      <div className="h-20"></div>
-     <Professional/>
+     <ProfessionalV2/>
       <div className="h-40"></div>
       
     </div>

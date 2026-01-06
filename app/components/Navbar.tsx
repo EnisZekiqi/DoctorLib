@@ -1,52 +1,74 @@
-'use client'
-import { CircleQuestionMark,User,ChevronLeft } from "lucide-react";
+"use client";
+
+import { CircleQuestionMark, User, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
 const Navbar = () => {
+  const path = usePathname();
+  const isSearch = path.startsWith("/search");
 
-    const path = usePathname()
+  if (path === "/login") return null;
 
-    const connect=path;
-const isSearch = connect.startsWith('/search');
+  return (
+    <header
+      className={`
+        w-full
+        absolute top-0 z-50
+        px-3 sm:px-6 py-3
+        ${isSearch ? "bg-[#1aa6a4]" : "bg-transparent"}
+      `}
+    >
+      <nav
+        className={`
+          flex items-center justify-between
+          rounded-2xl
+          px-3 py-2 sm:px-4 sm:py-3
+          ${isSearch ? "text-white" : "text-[#232929]"}
+          sm:bg-[#EFF1F1]
+        `}
+      >
+        {/* Left icon */}
+        {isSearch ? (
+          <Link href="/" className="md:hidden">
+            <ChevronLeft size={20} />
+          </Link>
+        ) : (
+          <CircleQuestionMark size={20} className="md:hidden text-[#5e6e6d]" />
+        )}
 
-    return ( 
-<section
-  className={`
-    w-full
-    ${isSearch ? 'p-1.5' : 'p-1.5 sm:p-6'}
-    ${isSearch
-      ? 'static bg-[#1aa6a4]'
-      : 'absolute top-0 z-1000 bg-[#1aa6a4] sm:bg-transparent'
-    }
-    ${connect === '/login' ? 'hidden' : 'block'}
-  `}
+        {/* Logo */}
+        <h1 className="text-xl font-medium italic text-center w-full md:w-auto">
+          MyDoc
+        </h1>
 
->        <nav className={` ${connect === '/login' ? 'hidden' : 'flex'}  ${connect.startsWith('/search') 
-      ? 'bg-[#1aa6a4] text-[#fbfbfb]' 
-      : 'bg-[#1aa6a4] sm:bg-[#EFF1F1] text-[#fbfbfb] sm:text-black'}   items-center justify-between z-[1000] rounded-2xl p-2 sm:p-4 w-full  text-[#000]`}>
-        {path.startsWith('/search') ? <Link href="/" className="block md:hidden"><ChevronLeft size={20}/></Link> : <span className="block md:hidden"><CircleQuestionMark size={20}/></span>}
-            <h1 className="text-2xl font-medium italic w-full text-center md:text-start md:w-[50%]">MyDoc</h1>
-           {connect === '/login' ? 
-            <Link className="block md:hidden rounded-lg text-xs font-medium p-2 bg-[#fbfbfb] text-[#232929]" href="/login">
-             Professional?
-            </Link>
-           : connect === '/' &&
-           <Link className="block md:hidden rounded-lg text-xs font-medium p-2 bg-[#fbfbfb] text-[#232929]" href="/login">
-            Connect
-            </Link>}
-            <div className=" hidden md:flex items-center gap-2 w-[50%] justify-end gap-6">
-                <button className="bg-[#fbfbfb] text-[#232929] hover:text-[#5e6e6d]  border border-[#1aa6a4] text-[14px] font-medium p-1.5 transition-all duration-300 rounded-xl">Are you a health professional?</button>
-                <button className="p-1.5 flex items-center font-light gap-0.5 text-[14px] transition-all duration-300"><CircleQuestionMark size={20}/>Help Center</button>
-                <Link href={`/login`} className="flex items-center btn-primary transition-all duration-300 rounded-xl p-1.5">
-                    <User  />
-                <div className="flex flex-col items-start ">
-                <h2 className="text-[14px] text-[#fbfbfb] font-semibold">Log In</h2>
-                 </div>
-                    </Link>
-            </div>
-        </nav>
-        </section>
-     );
-}
- 
+        {/* Right icon (mobile) */}
+        <Link href="/login" className="md:hidden">
+          <User size={20} className="text-[#5e6e6d]" />
+        </Link>
+
+        {/* Desktop actions */}
+        <div className="hidden md:flex items-center gap-6 ml-auto">
+          <button className="text-sm text-[#232929] hover:text-[#5e6e6d]">
+            Are you a health professional?
+          </button>
+
+          <button className="flex items-center gap-1 text-sm text-[#232929] hover:text-[#5e6e6d]">
+            <CircleQuestionMark size={18} />
+            Help Center
+          </button>
+
+          <Link
+            href="/login"
+            className="flex items-center gap-2 bg-[#1aa6a4] text-white px-4 py-2 rounded-xl"
+          >
+            <User size={18} />
+            Log In
+          </Link>
+        </div>
+      </nav>
+    </header>
+  );
+};
+
 export default Navbar;
