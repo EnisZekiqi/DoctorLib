@@ -30,9 +30,9 @@ const Features = () => {
     }
 
     const cards=[
-        {id:1,title:'Verified Professionals',describe:'All doctors on DoctorLib are fully verified and approved, ensuring accurate information and quality care.',icon:<ShieldCheck size={35} color='#1aa6a4'/>},
-        {id:2,title:'Simple Online Appointment',describe:'Book appointments in seconds with our intuitive scheduling system — no calls, no waiting.',icon:<ClipboardClock size={35} color='#1aa6a4'/>},
-        {id:3,title:'Trusted Patient Reviews',describe:'Read real reviews from patients and make informed decisions before booking.',icon:<Star size={35} color='#1aa6a4'/>},
+        {id:1,title:'Verified Professionals',describe:'All doctors on DoctorLib are fully verified and approved, ensuring accurate information and quality care.',icon:<ShieldCheck size={35} color='#e9f3ff'/>},
+        {id:2,title:'Simple Online Appointment',describe:'Book appointments in seconds with our intuitive scheduling system — no calls, no waiting.',icon:<ClipboardClock size={35} color='#e9f3ff'/>},
+        {id:3,title:'Trusted Patient Reviews',describe:'Read real reviews from patients and make informed decisions before booking.',icon:<Star size={35} color='#e9f3ff'/>},
     ]
 
     return ( 
@@ -78,7 +78,7 @@ const Features = () => {
     flex items-center justify-center
     w-14 h-14
     rounded-full
-    bg-gradient-to-br from-[#c9f6f6] to-[#9ee7e7]
+    bg-gradient-to-r from-[#0169e8] to-[#00a8e8]
     shadow-md
     group-hover:scale-105
     transition-transform

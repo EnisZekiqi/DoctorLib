@@ -59,7 +59,7 @@ const Footer = () => {
       </div>
      </div>
     </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 w-full items-center mt-8 justify-center justify-items-start">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 w-full items-center mt-8 justify-center justify-items-start">
           {content.map((item) => (
             <div key={item.id} className="flex flex-col gap-4">
               <h2 className="text-lg font-semibold">{item.base}</h2>

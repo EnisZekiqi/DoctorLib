@@ -25,7 +25,7 @@ const Services = () => {
   }, []);
 
   return (
-    <section className="w-full bg-[#07a6db] overflow-hidden">
+    <section className="w-full bg-gradient-to-r from-[#0169e8] to-[#00a8e8] overflow-hidden">
       <motion.div
         ref={marqueeRef}
         className="flex gap-10 group whitespace-nowrap group-hover:text-[#e9f3ff]/60 items-center text-xl text-[#e9f3ff] p-2"

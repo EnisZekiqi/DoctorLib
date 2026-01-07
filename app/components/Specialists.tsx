@@ -78,11 +78,11 @@ return (
         <Dot color="#e9f3ff" />
       </span>
 
-      <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8">
+      <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 items-center justify-center gap-4 mt-8">
         {specialty.map((spec) => (
           <div key={spec.id} className="flex group flex-col items-center gap-2 rounded-lg">
   <div
-    className="relative rounded-lg w-[170px] h-[220px] bg-cover bg-center"
+    className="relative rounded-lg w-[160px] sm:w-[170px] h-[220px] bg-cover bg-center"
     style={{ backgroundImage: `url(${spec.img})` }}
   >
 <div className="absolute inset-0 rounded-lg bg-black/20 group-hover:bg-black/50 transition-colors duration-300 z-10" />
