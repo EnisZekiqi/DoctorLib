@@ -2,28 +2,29 @@
 
 :root {
   /* Primary */
-  --primary: #1aa6a4;
-  --primary-content: #c9f6f6;
-  --primary-light: #21d2d0;
-  --primary-dark: #137a78;
+  --primary: #0169e8;
+  --primary-content: #e9f3ff;
+  --primary-light: #1e83fe;
+  --primary-dark: #0152b5;
 
   /* Backgrounds */
   --bg-main: #fbfbfb;
-  --bg-muted: #eff1f1;
+  --bg-muted: #eff0f1;
 
   /* Borders */
-  --border: #dde2e1;
+  --border: #dddfe2;
 
   /* Text */
-  --text-main: #232929;
-  --text-light: #5e6e6d;
-  --text-lighter: #849595;
+  --text-main: #232629;
+  --text-light: #5e656e;
+  --text-lighter: #848b95;
 }
 
 body {
   background: var(--bg-main);
   color: var(--text-main);
-    font-family: "Nunito", sans-serif;
+  font-family: var(--font-satoshi), sans-serif;
+
 }
 .html{
   scroll-behavior: smooth;

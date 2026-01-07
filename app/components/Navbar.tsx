@@ -60,7 +60,7 @@ const Navbar = () => {
 
           <Link
             href="/login"
-            className="flex items-center gap-2 bg-[#1aa6a4] text-white px-4 py-2 rounded-xl"
+            className="flex items-center gap-2 bg-[#1e83fe] hover:bg-[#0169e8] transition-all duration-200 text-white px-2 text-md py-2 rounded-xl"
           >
             <User size={18} />
             Log In

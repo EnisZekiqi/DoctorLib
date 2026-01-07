@@ -1,5 +1,5 @@
 'use client'
-import {ShieldCheck,ClipboardClock,Star} from 'lucide-react'
+import {ShieldCheck,ClipboardClock,Star,Dot} from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const Features = () => {
@@ -36,10 +36,17 @@ const Features = () => {
     ]
 
     return ( 
-        <motion.section 
+       <section className="flex flex-col items-center justify-center  py-16 px-4 md:px-8 ">
+        <span className="rounded-full p-2 flex items-center gap-4 bg-[#0169e8] ">
+        <Dot color="#e9f3ff" />
+        <p className="text-md text-[#e9f3ff] font-normal"> Reasons to Choose Us</p>
+        <Dot color="#e9f3ff" />
+      </span>
+         <motion.section 
             className=" grid grid-cols-1 md:grid-cols-3
     gap-8
     w-full mx-auto
+    mt-8
     px-4 items-center justify-center justify-items-center"
             variants={containerVariants}
             initial="initial"
@@ -91,6 +98,7 @@ const Features = () => {
 </motion.div>
         ))}
         </motion.section>
+       </section>
      );
 }
  

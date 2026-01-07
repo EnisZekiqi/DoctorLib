@@ -143,7 +143,7 @@ useEffect(() => {
 
 
     return ( 
-        <section ref={sectionRef} className="section1 bg-[#eff1f1] min-h-screen md:h-[600px] w-full overflow-hidden sm:relative flex items-center">
+        <section ref={sectionRef} className="section1 bg-[#eff0f1] min-h-screen md:h-[600px] w-full overflow-hidden sm:relative flex items-center">
         <div className="h-20"></div>
 <div className="    flex flex-col-revers emd:flex-row items-center justify-between px-4 sm:px-6 gap-6 sm:gap-10 ">
         <div className="flex flex-col relative items-center md:items-start gap-4 pl-0">
@@ -156,8 +156,9 @@ useEffect(() => {
   font-semibold
   text-[#232929]
   text-center md:text-left
+  leading-tight
   max-w-[22ch]
-  ">Live a <b className="font-semibold text-[#5e6e6d]">healthier life</b></motion.h1>
+  ">Discover Health & Find your Trusted <b className="font-semibold text-[#5e656e]">Doctors </b> Today</motion.h1>
           <motion.p
   initial={{ opacity: 0, y: -10 }}
   animate={{ opacity: 1, y: 0 }}
@@ -165,6 +166,7 @@ useEffect(() => {
   className=" text-sm
   sm:text-base
   text-[#849595]/80
+ 
   max-w-sm text-center sm:max-w-lg"
 >
   Find verified doctors, compare fees, and book appointments in seconds.
@@ -179,7 +181,7 @@ useEffect(() => {
   w-full
   py-3
   rounded-xl
-  bg-[#1aa6a4]
+  bg-[#0169e8]
   text-white
   font-medium
   shadow-lg
@@ -200,7 +202,7 @@ onClick={()=>setSearchDoc(true)}
     items-stretch
     sm:items-center
     gap-2
-    border border-[#1aa6a4]
+    border border-[#0169e8]
     bg-white
     rounded-2xl
     p-2 h-[55px]
@@ -244,7 +246,7 @@ onClick={()=>setSearchDoc(true)}
                     {filteredCities.map((city) => (
                       <button
                         key={city}
-                        className="px-3 py-2  cursor-pointer w-full text-start hover:bg-[#1aa6a4]/10 rounded-md"
+                        className="px-3 py-2  cursor-pointer w-full text-start hover:bg-[#0169e8]/10 rounded-md"
                         onClick={() => handleCity(city)}
                       >
                         {city}
@@ -255,7 +257,7 @@ onClick={()=>setSearchDoc(true)}
               
 <button
   type="submit"
-  className="bg-[#1aa6a4] hover:bg-[#168c8a] transition-all
+  className="bg-[#0169e8] hover:bg-[#1e83fe] transition-all
   text-white rounded-xl px-4 py-2 font-medium shadow-md w-[150px]" 
 >
   Search doctors
@@ -269,7 +271,7 @@ onClick={()=>setSearchDoc(true)}
   <motion.div
   variants={childrenVariants}
   className="flex items-center gap-2">
-    <span className="rounded-full p-2.5 bg-[#1aa6a4]"><Hospital size={20} color="#eff1f1"/></span>
+    <span className="rounded-full p-2.5 bg-[#0169e8]"><Hospital size={20} color="#eff1f1"/></span>
     <div className="flex flex-col items-start">
       <p className="text-lg sm:text-2xl font-semibold text-[#232929]">50+</p>
     <p className="text-xs sm:text-sm text-[#849595]">Clinics</p>
@@ -278,7 +280,7 @@ onClick={()=>setSearchDoc(true)}
   <motion.div
   variants={childrenVariants}
   className="flex items-center gap-2">
-    <span className="rounded-full p-2.5 bg-[#1aa6a4]"><Stethoscope size={20} color="#eff1f1"/></span>
+    <span className="rounded-full p-2.5 bg-[#0169e8]"><Stethoscope size={20} color="#eff1f1"/></span>
     <div className="flex flex-col items-start">
       <p className="text-lg sm:text-2xl font-semibold text-[#232929]">2k</p>
     <p className="text-xs sm:text-sm text-[#849595]">Doctors</p>
@@ -287,7 +289,7 @@ onClick={()=>setSearchDoc(true)}
   <motion.div
   variants={childrenVariants}
   className="flex items-center gap-2">
-    <span className="rounded-full p-2.5 bg-[#1aa6a4]"><IdCard size={20} color="#eff1f1"/></span>
+    <span className="rounded-full p-2.5 bg-[#0169e8]"><IdCard size={20} color="#eff1f1"/></span>
     <div className="flex flex-col items-start">
       <p className="text-lg sm:text-2xl font-semibold text-[#232929]">50k</p>
     <p className="text-xs sm:text-sm text-[#849595]">Patients</p>
@@ -296,15 +298,15 @@ onClick={()=>setSearchDoc(true)}
 </motion.div>
 
        </div>
-       <div ref={blob2Ref} className="absolute top-[20%] sm:top-[35%] sm:left-[40%] w-10 h-10 sm:w-20 sm:h-20 bg-[#1aa6a4]/90 rounded-full blur-[3px]">
-        <div className="absolute left-2.5  top-2.5 w-5 h-5 sm:w-15 sm:h-15 rounded-full bg-[#eff1f1] "></div>
+       <div ref={blob2Ref} className="absolute top-[20%] sm:top-[35%] sm:left-[40%] w-10 h-10 sm:w-20 sm:h-20 bg-[#0169e8]/90 rounded-full blur-[3px]">
+        <div className="absolute left-2.5  top-2.5 w-5 h-5 sm:w-15 sm:h-15 rounded-full bg-[#eff0f1] "></div>
        </div>
-        <div className=" hidden md:block relative  w-[750px] h-[750px]">
+        <div className=" hidden md:block relative  w-[700px] h-[850px]">
 
   {/* Background decorative circles */}
-  <div className="absolute inset-0 rounded-full bg-[#1aa6a4]/20 blur-3xl" />
-  <div ref={blobRef} className="blobs blur-sm absolute top-25 left-40 w-30 h-30 rounded-full bg-[#c9f6f6]/30 z-[2000]" >
-  <div className="w-25 h-25 rounded-full ml-2.5 mt-2 bg-[#1aa6a4] "></div>
+  <div className="absolute inset-0 rounded-full bg-[#0169e8]/20 blur-3xl" />
+  <div ref={blobRef} className="blobs blur-sm absolute top-40 left-40 w-30 h-30 rounded-full bg-[#c9f6f6]/30 z-[2000]" >
+  <div className="w-25 h-25 rounded-full ml-2.5 mt-2 bg-[#0169e8] "></div>
   </div>
 
   {/* Rotated image container */}
@@ -315,7 +317,7 @@ onClick={()=>setSearchDoc(true)}
     className="
     
       absolute bottom-[20%] left-[20%] w-full h-full
-      bg-[#1aa6a4]
+      bg-[#0169e8]
       rounded-[48px]
       overflow-hidden
       shadow-2xl
@@ -323,14 +325,14 @@ onClick={()=>setSearchDoc(true)}
   >
     {/* Image */}
     <motion.img
-      src="/doctor.png" // replace with real doctors image later
+      src="/woman.png" // replace with real doctors image later
       alt="Medical team"
       initial={{ scale: 1.05, rotate: 6 }}
       animate={{ scale: 1, rotate: 6 }}
       transition={{ duration: 0.8 }}
       className="
-        absolute -bottom-20 right-0
-        w-[110%] h-auto rotate-8
+        absolute -bottom-50 right-18
+        w-[75%] h-auto rotate-5
         object-cover
       "
     />
@@ -366,7 +368,7 @@ onClick={()=>setSearchDoc(true)}
         <div className="space-y-4">
           <div className="flex flex-col gap-2">
           <label className="text-sm">Search Doctor</label>
-          <div className="flex gap-2 border border-[#1aa6a4] p-1 rounded-sm">
+          <div className="flex gap-2 border border-[#0169e8] p-1 rounded-sm">
             <MapPin size={18} color="#5e6e6d" />
             <input
               value={forName} onChange={(e)=>setForName(e.target.value)}
@@ -376,7 +378,7 @@ onClick={()=>setSearchDoc(true)}
         </div>
         <div className="flex flex-col gap-2">
           <label className="text-sm">Search City</label>
-          <div className="flex gap-2 border border-[#1aa6a4] p-1 rounded-sm">
+          <div className="flex gap-2 border border-[#0169e8] p-1 rounded-sm">
             <MapPin size={18} color="#5e6e6d" />
             <input
               value={searchTerm}
@@ -394,7 +396,7 @@ onClick={()=>setSearchDoc(true)}
               animate={{ opacity: 1, y: 0, }}
               exit={{ opacity: 0, y: -10 }}
             className="flex flex-col items-start gap-4 mt-4 h-full">
-              <h1 className="text-xl font-medium text-[#1aa6a4]">Results</h1>
+              <h1 className="text-xl font-medium text-[#0169e8]">Results</h1>
             <div className=" w-full"
             >
               {filteredCities.map(city => (
